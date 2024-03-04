@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Edit Post</h3>
+        <hr>
+        <form [formGroup]="editpostfrom" (ngSubmit)="editsubnmit()">
+            <div class="my-3">
+                <label for="">Edit Title</label>
+                <input type="text" class="form-control" placeholder="Edit Title" formControlName="editposttitle">
+                <div *ngIf="editpostfrom.get('editposttitle')?.touched && !editpostfrom.get('editposttitle')?.valid">
+                <div *ngIf="editpostfrom.get('editposttitle')?.errors?.['required']" class="text-danger"> Title is Required</div>
+                </div>
+               
+            </div>
+            <div class="my-3">
+                <label for="">Edit Description</label>
+                 <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Edit Description" formControlName="editpostdescription"></textarea>
+                <div *ngIf="editpostfrom.get('editpostdescription')?.touched && !editpostfrom.get('editpostdescription')?.valid">
+                <div class="text-danger" *ngIf="editpostfrom.get('editpostdescription')?.errors?.['required']">Description is Required</div>
+                </div>
+            </div>
+            <div class="my-3">
+                <button type="submit" class="btn btn-primary" [disabled]="!editpostfrom.valid">Edit Post</button>
+            </div>
+        </form>
+    </div>
+</div>

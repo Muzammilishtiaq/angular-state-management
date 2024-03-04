@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Login</h3>
+        <form [formGroup]="loginform" (ngSubmit)="loginsubmit()">
+            <div class="mb-3"><label for=""></label>
+                <input type="email" placeholder="your@gmail.com" formControlName="loginemail" class="form-control">
+                <div *ngIf="loginform.get('loginemail')?.touched && !loginform.get('loginemail')?.valid">
+                    <div class="text-danger fw-bold-fs-6" *ngIf="loginform.get('loginemail')?.errors?.['required']">
+                        Email is Required</div>
+                    <div class="text-danger fw-bold-fs-6" *ngIf="loginform.get('loginemail')?.errors?.['email']">Email
+                        is unvalid</div>
+                </div>
+            </div>
+            <div class="mb-3"><label for=""></label>
+                <input type="password" placeholder="Password" formControlName="loginpassword" class="form-control">
+                <div *ngIf="loginform.get('loginpassword')?.touched && !loginform.get('loginpassword')?.valid">
+                    <div class="text-danger fw-bold-fs-6" *ngIf="loginform.get('loginpassword')?.errors?.['required']">
+                        Password is Required
+                    </div>
+                    <div class="text-danger fw-bold-fs-6" *ngIf="loginform.get('loginpassword')?.errors?.['maxlength']">
+                        Password is 8 Character
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3"><label for=""></label>
+                <input type="submit" class="form-control text-center btn btn-primary fw-bold fs-5" value="Login" [disabled]="!loginform.valid">
+            </div>
+        </form>
+    </div>
+</div>

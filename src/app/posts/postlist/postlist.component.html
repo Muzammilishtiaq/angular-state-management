@@ -1,0 +1,30 @@
+<div class="container row">
+    <div class="col-md-8">
+        <button class="btn btn-info" routerLink="/post/add-post">Add Post</button>
+        <h3>Post List</h3>
+        <table>
+            <thead>
+                <tr class="">
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>DESCRIPTION</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts |async">
+                    <td>{{post.id}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.description}}</td>
+                    <td>
+                        <button routerLink="/post/edit/{{post.id}}">update</button>
+                        <button (click)="deletepost(post.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <router-outlet />
+    </div>
+</div>
